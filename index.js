@@ -60,11 +60,23 @@ console.log(getYears(getFinals(fifaData)))
 Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
 function getWinners(getFinalsCB) {
-    const winners = getFinalsCB.map(item => item['Win conditions'])
+    const winners = [];
+    getFinalsCB.forEach(function(item) {
+        if(item['Home Team Goals']>item['Away Team Goals']){
+            winners.push(item['Home Team Name'])
+        } else if(item['Away Team Goals']>item['Home Team Goals']) {
+            winners.push(item['Away Team Name'])
+        } else {
+            winners.push(`it was decided on pens`)
+        }
+        
+    });
     return winners
 }
 
-console.log(getWinners(getFinals(fifaData)))
+    console.log(getWinners(getFinals(fifaData)))
+
+
 
 
 
