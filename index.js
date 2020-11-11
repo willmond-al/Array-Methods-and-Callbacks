@@ -101,7 +101,7 @@ function getWinnersByYear(getWinnersCB, getYearsCB){
     const winners = getWinnersCB
 
     const winnerWithYear = years.map(function(item, index){
-
+        
     return `In ${item}, ${winners[index]} won the world cup!`
     });
     return winnerWithYear
