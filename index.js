@@ -36,14 +36,17 @@ console.log(finals2014[0]['Win conditions'])
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-const getFinals = fifaData.filter(function(data){
-    return data.Stage==="Final"
-})
-    //  const finalsData = data.filter(item => item.Stage==="Final")
-// return finalsData
+// const getFinals = fifaData.filter(function(data){
+//     return data.Stage==="Final"
+// })
+
+    function getFinals(data){
+    const finalsData = data.filter(item => item.Stage==="Final")
+    return finalsData
+    }
 
 
-console.log(getFinals)
+console.log(getFinals(fifaData))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -53,7 +56,7 @@ function getYears(getFinalsCB) {
     const years = getFinalsCB.map(item => item.Year)
     return years
 }
-console.log(getYears(getFinals))
+console.log(getYears(getFinals(fifaData)))
 
 // const years = [];
 // const getYears = getFinals.filter(function(callback){
@@ -79,7 +82,7 @@ function getWinners(getFinalsCB) {
     return winners
 }
 
-    console.log(getWinners(getFinals))
+    console.log(getWinners(getFinals(fifaData)))
 
 
 
@@ -96,11 +99,15 @@ Parameters:
 function getWinnersByYear(getWinnersCB, getYearsCB){
     const years = getYearsCB
     const winners = getWinnersCB
-    const winnerWithYear = years.map(function(item){
 
-    return `In ${item}, ${winners} won the world cup!`
+    const winnerWithYear = years.map(function(item, index){
+
+    return `In ${item}, ${winners[index]} won the world cup!`
     });
+    return winnerWithYear
 }
+console.log(getWinnersByYear(getWinners(getFinals(fifaData)), getYears(getFinals(fifaData))))
+    
 
 // function getWinnersByYear(getWinnersCB, getYearsCB) {
 //     const myDataWins = getYearsCB && getWinnersCB
